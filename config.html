@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>PoE Ladder Desktop App</title>
+        <style type="text/css">
+            body {
+                background-color: red;
+            }
+
+            #close {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            #content {
+                border: none;
+                height: fit-content;
+                width: fit-content;
+                -webkit-app-region: drag;
+            }
+        </style>
+    </head>
+    <body>
+        <button id="close">Close</button>
+        <form>
+            <input type="text" id="username" />
+            <input type="text" id="ladderIdentifier" />
+            <select id="skin">
+                <option value="ziz">Zizaran</option>
+                <option value="">Original</option>
+            </select>
+        </form>
+        <button id="save">Save</button>
+
+        <script type="text/javascript">
+
+            let closeButton = document.getElementById('close');
+            closeButton.addEventListener('click', () => {
+                window.electronAPI.closeApp();
+            });
+
+            let saveButton = document.getElementById('save');
+            saveButton.addEventListener('click', () => {
+                window.electronAPI.saveConfig({
+                    "username": "Zizaran-6796",
+                    "ladderIdentifier": "SSF_Mirage_HC"
+                });
+            });
+
+        </script>
+    </body>
+</html>

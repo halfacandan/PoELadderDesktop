@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>PoE Ladder Desktop App</title>
+        <style type="text/css">
+            #close {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            #content {
+                border: none;
+                height: fit-content;
+                width: fit-content;
+                -webkit-app-region: drag;
+            }
+        </style>
+    </head>
+    <body>
+        <button id="close">Close</button>
+        <iframe id="content" src="https://poeladder.com/api/v1/streamers/browsersource?username=Zizaran-6796&ladderIdentifier=SSF_Mirage_HC&skin=ziz">Browser not compatible</iframe>
+    </body>
+</html>
+
+<script type="text/javascript">
+
+    let form = document.getElementById('close');
+    form.addEventListener('click', () => {
+        window.electronAPI.closeApp();
+    });
+
+</script>
