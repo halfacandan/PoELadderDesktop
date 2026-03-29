@@ -18,10 +18,14 @@ body {
     max-height: min-content;
 }
 
-#menu {
-    position: absolute;
-    top: 0;
-    left: 0;
+#form {
+    background-color: #131313;
+    max-width: fit-content;
+    -webkit-app-region: drag;
+}
+
+#form a {
+    -webkit-app-region: no-drag;
 }
 
 #menu button {
@@ -31,6 +35,7 @@ body {
     border: 0;
     height: 22px;
     width: 22px;
+    -webkit-app-region: no-drag;
 }
 
 #menu button svg {
@@ -49,4 +54,6 @@ input, select {
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
     height: 20px;
+    margin: 5px;
+    -webkit-app-region: no-drag;
 }

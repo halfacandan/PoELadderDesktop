@@ -1,14 +1,20 @@
-import { BrowserWindow, ipcMain } from 'electron';
+import { BrowserWindow, ipcMain, shell } from 'electron';
 import * as path from "path";
 import Store from 'electron-store';
 import { UserConfig } from './types';
 
-// Custom app closure command handler
+const baseUrl = "https://beta.poeladder.com";
+
+// Custom app commands
+ipcMain.on('openLadder', () => {
+    shell.openExternal(`${baseUrl}/ladder?ladderIdentifier=${store.get('ladderIdentifier')}`);
+});
+ipcMain.on('openProfile', () => {
+    shell.openExternal(`${baseUrl}/profile?user=${store.get('username')}&ladderIdentifier=${store.get('ladderIdentifier')}`);
+});
 ipcMain.on('closeApp', () => {
     Main.application.quit();
 });
-
-// Custom app config command handler
 ipcMain.on('configureApp', () => {
     Main.loadConfig();
 });
@@ -57,7 +63,7 @@ export default class Main {
 
     private static getRankWidgetUrl(){
 
-        let url = `https://beta.poeladder.com/api/v1/streamers/browsersource?app=1&username=${store.get('username')}&ladderIdentifier=${store.get('ladderIdentifier')}`;
+        let url = `${baseUrl}/api/v1/streamers/browsersource?app=1&username=${store.get('username')}&ladderIdentifier=${store.get('ladderIdentifier')}`;
         if(store.get('skin') != null) url += `&skin=${store.get('skin')}`;
         
         return url;
@@ -72,12 +78,12 @@ export default class Main {
     private static onReady() {
 
         Main.mainWindow = new Main.BrowserWindow({
-            height: 600,
-            width: 800,
+            height: 150,
+            width: 500,
             resizable: false,
             frame: false,
             transparent: true,
-            //alwaysOnTop: true,
+            alwaysOnTop: true,
             webPreferences: {
                 preload: path.join(__dirname, "preload.js"),
             },

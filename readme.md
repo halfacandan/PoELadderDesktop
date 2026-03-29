@@ -1,7 +1,9 @@
-This is the readme file
+# PoE Ladder Desktop App
 
-Electron with TS:
-https://davembush.medium.com/typescript-and-electron-the-right-way-141c2e15e4e1
+This app acts like a desktop widget. It appears above all other windows and lets you keep a persistent indicator of your current ranking on PoE Ladder.
 
-Electron Desktop App:
-https://www.youtube.com/watch?v=IzONNPX-tE4
+The content refreshes every 5 minutes so you'll be able to see changes in your ranking over time.
+
+## Contributing
+
+Please feel free to [raise an issue](https://github.com/halfacandan/PoELadderDesktop/issues) if you encounter any problems or if you'd like a new feature added.
