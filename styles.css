@@ -1,0 +1,52 @@
+/* Fonts */
+
+/* https://web.poecdn.com/protected/css/font.css?v=5931036dae40633eaf1680b366588c43&key=4rcNCimGiCj3Ztjc_v1BUg */
+@font-face {
+    font-family: "FontinSmallCaps";
+    font-weight: normal;
+    font-style: normal;
+    src: url('https://web.poecdn.com/font/fontin-smallcaps-webfont.woff') format("woff")
+}
+
+/* Generic */
+body {
+    background-color: #3A2207;
+    -webkit-app-region: no-drag;
+    position: relative;
+    background-color: transparent;
+    height: auto;
+    max-height: min-content;
+}
+
+#menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#menu button {
+    background-color: #3A2207;
+    padding: 2px;
+    border-radius: 4px;
+    border: 0;
+    height: 22px;
+    width: 22px;
+}
+
+#menu button svg {
+    color: #ffffffde;
+    height: 18px;
+    width: 18px;
+}
+
+input, select {
+    font-family: "FontinSmallCaps",Verdana,Arial,Helvetica,sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    height: 20px;
+}

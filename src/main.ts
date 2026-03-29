@@ -8,6 +8,11 @@ ipcMain.on('closeApp', () => {
     Main.application.quit();
 });
 
+// Custom app config command handler
+ipcMain.on('configureApp', () => {
+    Main.loadConfig();
+});
+
 // Persist user config
 const store = new Store<UserConfig>({
     defaults: {
@@ -25,10 +30,24 @@ export default class Main {
     static application: Electron.App;
     static BrowserWindow: typeof BrowserWindow;    
 
+    public static loadApp(){
+        Main.mainWindow?.loadURL(Main.getRankWidgetUrl());
+    }
+
+    public static loadConfig(){
+        Main.mainWindow?.loadURL("file://" +
+            path.join(
+                __dirname,
+                "../config.html"
+            ) +
+            `?username=${store.get('username')}&ladderIdentifier=${store.get('ladderIdentifier')}&skin=${store.get('skin')}`
+        );
+    }
+
     public static saveUserConfig(config: UserConfig) {
         
         store.set(config);
-        Main.mainWindow?.loadURL(Main.getRankWidgetUrl());
+        Main.loadApp();
     }
 
     private static isConfigured(){
@@ -38,7 +57,7 @@ export default class Main {
 
     private static getRankWidgetUrl(){
 
-        let url = `https://poeladder.com/api/v1/streamers/browsersource?app=1&username=${store.get('username')}&ladderIdentifier=${store.get('ladderIdentifier')}`;
+        let url = `https://beta.poeladder.com/api/v1/streamers/browsersource?app=1&username=${store.get('username')}&ladderIdentifier=${store.get('ladderIdentifier')}`;
         if(store.get('skin') != null) url += `&skin=${store.get('skin')}`;
         
         return url;
