@@ -21,6 +21,10 @@ You can get started really quickly. All you need to do is:
 
     ![View your rank](resources\view_your_ranking.png)
 
+## Acknowledgements
+
+This project uses the [Electron Builder Action](https://github.com/marketplace/actions/electron-builder-action) to package and release.
+
 ## Contributing
 
 Please feel free to [raise an issue](https://github.com/halfacandan/PoELadderDesktop/issues) if you encounter any problems or if you'd like a new feature added.
