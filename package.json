@@ -1,6 +1,6 @@
 {
   "name": "poe-ladder-desktop",
-  "productName": "PoE Ladder App",
+  "productName": "PoE Ladder Desktop",
   "version": "1.0.0",
   "description": "A Desktop overlay that displays a user's rank and collection progress from the poeladder.com website, for a given league",
   "main": "dist/app.js",

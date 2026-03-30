@@ -40,7 +40,7 @@ Users should review the privacy policies of these projects as needed.
 All signed Windows binaries (installer and uninstaller) are configured with the following metadata:
 
 ### Product Name
-- **Product Name**: PoE Ladder App
+- **Product Name**: PoE Ladder Desktop
 - **Internal Name**: poe-ladder-desktop
 
 ### Version Management
