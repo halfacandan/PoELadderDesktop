@@ -16,7 +16,11 @@ function selectOption(list, selectedValue){
 
 const params = new URL(location.href).searchParams;
 
-document.getElementById('username').value = params.get('username')?.replace(/-(\d{4})$/, "#$1");
+let username = params.get('username')?.replace(/-(\d{4})$/, "#$1");
+if(username == "undefined" || username == ""){
+    username = null;
+}
+document.getElementById('username').value = username;
 
 selectOption(
     document.getElementById('logo'),

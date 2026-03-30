@@ -1,5 +1,6 @@
 {
   "name": "poe-ladder-desktop",
+  "productName": "PoE Ladder App",
   "version": "1.0.0",
   "description": "A Desktop overlay that displays a user's rank and collection progress from the poeladder.com website, for a given league",
   "main": "dist/app.js",
@@ -34,13 +35,32 @@
   },
   "build": {
     "appId": "poe-ladder-desktop",
+    "asar": true,
     "files": [
       "dist/**/*",
       "config.html",
       "styles.css",
       "config.js",
+      "icons/**/*",
       "node_modules/**/*"
     ],
+    "directories": {
+      "buildResources": "icons"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "icons/icon-256x256.ico",
+      "certificateFile": null,
+      "certificatePassword": null
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
     "linux": {
       "target": [
         "AppImage"
