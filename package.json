@@ -40,6 +40,11 @@
       "styles.css",
       "config.js",
       "node_modules/**/*"
-    ]
+    ],
+    "linux": {
+      "target": [
+        "AppImage"
+      ]
+    }
   }
 }
