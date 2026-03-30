@@ -21,9 +21,15 @@ You can get started really quickly. All you need to do is:
 
     ![View your rank](resources/view_your_ranking.png)
 
+## Code signing policy
+
+Please see this document for [full details of the PoE Ladder App's code signing policy](docs/code-signing-policy.md).
+
 ## Acknowledgements
 
 This project uses the [Electron Builder Action](https://github.com/marketplace/actions/electron-builder-action) to package and release.
+
+This project uses [Free code signing provided by SignPath.io](https://signpath.io/).
 
 ## Contributing
 
