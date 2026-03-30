@@ -1,52 +1,37 @@
 <html>
     <head>
-        <title>PoE Ladder Desktop App</title>
-        <style type="text/css">
-            body {
-                background-color: red;
-            }
-
-            #close {
-                position: absolute;
-                top: 0;
-                left: 0;
-            }
-
-            #content {
-                border: none;
-                height: fit-content;
-                width: fit-content;
-                -webkit-app-region: drag;
-            }
-        </style>
+        <title>PoE Ladder Desktop App: Configuration</title>
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <button id="close">Close</button>
-        <form>
-            <input type="text" id="username" />
-            <input type="text" id="ladderIdentifier" />
-            <select id="skin">
-                <option value="ziz">Zizaran</option>
-                <option value="">Original</option>
-            </select>
-        </form>
-        <button id="save">Save</button>
+        <div id="form">
+            <form>
+                <div class="row">
+                    <label for="username">Account</label>
+                    <input id="username" type="text" value="" placeholder="e.g. halfacandan#2678"/>
+                </div>
+                <div class="row">
+                    <label for="ladderIdentifier">Ladder</label>
+                    <select id="ladderIdentifier"></select>
+                </div>
+                <div class="row">
+                    <label for="skin">Skin</label>
+                    <select id="skin"></select>
 
-        <script type="text/javascript">
-
-            let closeButton = document.getElementById('close');
-            closeButton.addEventListener('click', () => {
-                window.electronAPI.closeApp();
-            });
-
-            let saveButton = document.getElementById('save');
-            saveButton.addEventListener('click', () => {
-                window.electronAPI.saveConfig({
-                    "username": "Zizaran-6796",
-                    "ladderIdentifier": "SSF_Mirage_HC"
-                });
-            });
-
-        </script>
+                    <label for="logo">Include Logo?</label>
+                    <select id="logo">
+                        <option value="">Yes</option>
+                        <option value="nologo">No</option>
+                    </select>
+                </div>
+            </form>
+            <div id="menu">
+                <button id="save" title="Save Configuration">
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="200px" width="200px" xmlns="http://www.w3.org/2000/svg"><path d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-242.7c0-17-6.7-33.3-18.7-45.3L352 50.7C340 38.7 323.7 32 306.7 32L64 32zm0 96c0-17.7 14.3-32 32-32l192 0c17.7 0 32 14.3 32 32l0 64c0 17.7-14.3 32-32 32L96 224c-17.7 0-32-14.3-32-32l0-64zM224 288a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"></path></svg>
+                    <span>Save</span>
+                </button>
+            </div>
+        </div>
+        <script type="text/javascript" src="config.js"></script>
     </body>
 </html>
