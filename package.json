@@ -44,9 +44,6 @@
       "icons/**/*",
       "node_modules/**/*"
     ],
-    "directories": {
-      "buildResources": "icons"
-    },
     "win": {
       "target": [
         "nsis"
@@ -62,7 +59,14 @@
     "linux": {
       "target": [
         "AppImage"
-      ]
+      ],
+      "icon": "icons/icon-256x256.png"
+    },
+    "darwin": {
+      "target": [
+        "dmg"
+      ],
+      "icon": "icons/icon-256x256.icns"
     }
   }
 }
