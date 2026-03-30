@@ -38,9 +38,9 @@
     "asar": true,
     "files": [
       "dist/**/*",
-      "config.html",
-      "styles.css",
-      "config.js",
+      "src/config.html",
+      "src/styles.css",
+      "src/config.js",
       "icons/**/*",
       "node_modules/**/*"
     ],

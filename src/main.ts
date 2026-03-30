@@ -69,7 +69,7 @@ export default class Main {
                     Main.mainWindow?.loadURL("file://" +
                         path.join(
                             __dirname,
-                            "../config.html"
+                            "../src/config.html"
                         ) +
                         `?username=${Main.getUsername()}&ladderIdentifier=${store.get('ladderIdentifier')}&skin=${store.get('skin')}&logo=${store.get('logo')}`
                     )
