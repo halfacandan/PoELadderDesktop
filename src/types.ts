@@ -2,7 +2,9 @@ export type UserConfig = {
     username?: string,
     ladderIdentifier?: string,
     skin?: string,
-    logo?: string
+    logo?: string,
+    positionX: number|undefined,
+    positionY: number|undefined
 }
 
 export type ConfigValues = {

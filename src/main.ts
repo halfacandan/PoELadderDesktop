@@ -13,6 +13,11 @@ ipcMain.on('openProfile', () => {
     shell.openExternal(`${baseUrl}/profile?user=${Main.getUsername()}&ladderIdentifier=${store.get('ladderIdentifier')}`);
 });
 ipcMain.on('closeApp', () => {
+    
+    let widgetPosition = Main.mainWindow?.getPosition() ?? [undefined, undefined];
+    store.set('positionX', widgetPosition[0]);
+    store.set('positionY', widgetPosition[1]);
+
     Main.application.quit();
 });
 ipcMain.on('configureApp', () => {
@@ -27,7 +32,7 @@ ipcMain.on('saveConfig', (_, config) => {
 
 export default class Main {
 
-    static debug: boolean = true;
+    static debug: boolean = false; // true = Enable Chrome Developer pane, false = Disable Chrome Developer pane
     static mainWindow: Electron.BrowserWindow|null;
     static application: Electron.App;
     static BrowserWindow: typeof BrowserWindow;
@@ -110,6 +115,8 @@ export default class Main {
         Main.mainWindow = new Main.BrowserWindow({
             height: 150,
             width: 500,
+            x: store.get('positionX') ?? undefined,
+            y: store.get('positionY') ?? undefined,
             resizable: false,
             frame: false,
             transparent: true,
