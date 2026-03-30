@@ -6,16 +6,24 @@
     <body>
         <div id="form">
             <form>
-                <input type="text" id="username" value="" placeholder="Account Name"/>
-                <input type="text" id="ladderIdentifier" value="" placeholder="League"/>
-                <select id="skin">
-                    <option value="ziz">Zizaran</option>
-                    <option value="">Original</option>
-                </select>
-                <select id="logo">
-                    <option value="">Logo</option>
-                    <option value="nologo">Nologo</option>
-                </select>
+                <div class="row">
+                    <label for="username">Account</label>
+                    <input id="username" type="text" value="" placeholder="e.g. halfacandan#2678"/>
+                </div>
+                <div class="row">
+                    <label for="ladderIdentifier">Ladder</label>
+                    <select id="ladderIdentifier"></select>
+                </div>
+                <div class="row">
+                    <label for="skin">Skin</label>
+                    <select id="skin"></select>
+
+                    <label for="logo">Include Logo?</label>
+                    <select id="logo">
+                        <option value="">Yes</option>
+                        <option value="nologo">No</option>
+                    </select>
+                </div>
             </form>
             <div id="menu">
                 <button id="save" title="Save Configuration">
@@ -24,7 +32,6 @@
                 </button>
             </div>
         </div>
-
         <script type="text/javascript" src="config.js"></script>
     </body>
 </html>

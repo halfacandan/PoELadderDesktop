@@ -16,35 +16,45 @@ body {
     background-color: transparent;
     height: auto;
     max-height: min-content;
+    margin: 0;
 }
 
 #form {
+    color-scheme: light dark;
     background-color: #131313;
+    border: 1px solid #130900;
     max-width: fit-content;
     -webkit-app-region: drag;
+    font-family: "FontinSmallCaps",Verdana,Arial,Helvetica,sans-serif;
+}
+
+#form form {
+    padding: 7px;
+    margin-bottom: 0;
 }
 
 #form a {
     -webkit-app-region: no-drag;
 }
 
-#menu button {
-    background-color: #3A2207;
-    padding: 2px;
-    border-radius: 4px;
-    border: 0;
-    height: 22px;
-    width: 22px;
-    -webkit-app-region: no-drag;
+#form .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
 }
 
-#menu button svg {
+#form .row label {
     color: #ffffffde;
-    height: 18px;
-    width: 18px;
+    margin: 0 5px;
+    min-width: 70px;
 }
 
-input, select {
+#username, #ladderIdentifier {
+    width: 237px;
+}
+
+#form input, #form select {
     font-family: "FontinSmallCaps",Verdana,Arial,Helvetica,sans-serif;
     line-height: 1.5;
     font-weight: 400;
@@ -56,4 +66,31 @@ input, select {
     height: 20px;
     margin: 5px;
     -webkit-app-region: no-drag;
+}
+
+#menu button {
+    background-color: #3A2207;
+    padding: 2px;
+    border-radius: 4px;
+    border: 0;
+    height: 30px;
+    width: 70px;
+    margin: 5px;
+    -webkit-app-region: no-drag;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+#menu button svg {
+    color: #ffffffde;
+    height: 18px;
+    width: 18px;
+    margin-left: 4px;
+}
+
+#menu button span {
+    font-family: "FontinSmallCaps",Verdana,Arial,Helvetica,sans-serif;
+    font-size: 120%;
+    margin-left: 5px;
 }
