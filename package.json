@@ -62,7 +62,7 @@
       ],
       "icon": "icons/icon-256x256.png"
     },
-    "darwin": {
+    "mac": {
       "target": [
         "dmg"
       ],
