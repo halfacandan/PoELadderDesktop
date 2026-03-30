@@ -51,9 +51,7 @@
       "target": [
         "nsis"
       ],
-      "icon": "icons/icon-256x256.ico",
-      "certificateFile": null,
-      "certificatePassword": null
+      "icon": "icons/icon-256x256.ico"
     },
     "nsis": {
       "oneClick": false,
