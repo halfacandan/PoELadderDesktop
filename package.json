@@ -2,10 +2,11 @@
   "name": "poe-ladder-desktop",
   "version": "1.0.0",
   "description": "A Desktop overlay that displays a user's rank and collection progress from the poeladder.com website, for a given league",
-  "main": "app.js",
+  "main": "dist/app.js",
   "scripts": {
     "build": "tsc",
-    "start": "npm run build && electron ./dist/app.js"
+    "start": "npm run build && electron ./dist/app.js",
+    "release": "npm run build && electron-builder --publish always"
   },
   "repository": {
     "type": "git",
@@ -25,10 +26,20 @@
   "devDependencies": {
     "@types/electron": "^1.4.38",
     "electron": "^41.1.0",
+    "electron-builder": "^26.8.1",
     "typescript": "^6.0.2"
   },
   "dependencies": {
-    "electron-builder": "^26.8.1",
     "electron-store": "^11.0.2"
+  },
+  "build": {
+    "appId": "poe-ladder-desktop",
+    "files": [
+      "dist/**/*",
+      "config.html",
+      "styles.css",
+      "config.js",
+      "node_modules/**/*"
+    ]
   }
 }
