@@ -1,7 +1,7 @@
 {
   "name": "poe-ladder-desktop",
   "productName": "PoE Ladder Desktop",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Desktop overlay that displays a user's rank and collection progress from the poeladder.com website, for a given league",
   "main": "dist/app.js",
   "scripts": {
@@ -36,6 +36,7 @@
   "build": {
     "appId": "poe-ladder-desktop",
     "asar": true,
+    "releaseNotesFile": "CHANGELOG.md",
     "files": [
       "dist/**/*",
       "src/config.html",
