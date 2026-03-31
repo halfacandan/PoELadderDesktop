@@ -36,7 +36,9 @@
   "build": {
     "appId": "poe-ladder-desktop",
     "asar": true,
-    "releaseNotesFile": "CHANGELOG.md",
+    "releaseInfo": {
+      "releaseNotesFile": "release-notes.md"
+    },
     "files": [
       "dist/**/*",
       "src/config.html",
