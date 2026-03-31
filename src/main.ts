@@ -8,9 +8,11 @@ const baseUrl = "https://poeladder.com";
 // Custom app commands
 ipcMain.on('openLadder', () => {
     shell.openExternal(`${baseUrl}/ladder?ladderIdentifier=${store.get('ladderIdentifier')}`);
+    Main.ensureAlwaysOnTop();
 });
 ipcMain.on('openProfile', () => {
     shell.openExternal(`${baseUrl}/profile?user=${Main.getUsername()}&ladderIdentifier=${store.get('ladderIdentifier')}`);
+    Main.ensureAlwaysOnTop();
 });
 ipcMain.on('closeApp', () => {
     
@@ -43,9 +45,22 @@ export default class Main {
         return store.get('username')?.replace(/#(\d{4})$/, "-$1");
     }
 
+    public static ensureAlwaysOnTop() {
+
+        Main.mainWindow?.setAlwaysOnTop(true, 'screen-saver');
+        Main.mainWindow?.setVisibleOnAllWorkspaces(true, {
+            visibleOnFullScreen: true,
+        });
+
+        // Optional: Prevent minimizing
+        Main.mainWindow?.setMinimizable(false);
+    }
+
     public static loadApp(){
 
-        Main.mainWindow?.loadURL(Main.getRankWidgetUrl());
+        Main.mainWindow?.loadURL(Main.getRankWidgetUrl()).then(() => {
+            Main.ensureAlwaysOnTop();
+        });
     }
 
     public static loadConfig(){
@@ -74,7 +89,8 @@ export default class Main {
                         `?username=${Main.getUsername()}&ladderIdentifier=${store.get('ladderIdentifier')}&skin=${store.get('skin')}&logo=${store.get('logo')}`
                     )
                         .then(() => { Main.mainWindow?.webContents.send('sendSettings', Main.configValues); })
-                        .then(() => { Main.mainWindow?.show(); });
+                        .then(() => { Main.mainWindow?.show(); })
+                        .then(() => { Main.ensureAlwaysOnTop(); });
                 } catch (error) {
                     console.error('Failed to parse config response:', error);
                 }
@@ -112,20 +128,36 @@ export default class Main {
 
     private static onReady() {
 
+        if (process.platform === 'darwin') {
+            Main.application?.dock?.hide();
+        }
+
         Main.mainWindow = new Main.BrowserWindow({
             height: 150,
             width: 500,
             x: store.get('positionX') ?? undefined,
             y: store.get('positionY') ?? undefined,
             resizable: false,
+            skipTaskbar: true,
+            fullscreenable: false,
             frame: false,
             transparent: true,
             backgroundColor: '#00000000', // Prevent rendering error in Electron, caused by transparent background
             alwaysOnTop: true,
+            type: 'panel', // Allows the window to be above fullscreen games on Windows, and not show in task switcher
             webPreferences: {
                 preload: path.join(__dirname, "preload.js"),
             },
         });
+
+        // Restore alwaysOnTop when window loses focus
+        // e.g. when clicking links to open profile/ladder in browser
+        // while playing Path of Exile in borderless, windowed mode 
+        // or fullscreen mode
+        Main.mainWindow.on('blur', () => {
+            Main.ensureAlwaysOnTop();
+        });
+
         if(Main.isConfigured()){
 
             Main.loadApp();
